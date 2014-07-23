@@ -13,6 +13,8 @@ var port = process.env.PORT || 8080;
 
 //set static file directory
 //app.use(express.static(path.join(__dirname, 'public')));
+
+//default directory for public files
 app.use(express.static('public'));
 
 //middleware to log requests
@@ -25,9 +27,9 @@ app.use(function(req, res, next){
 app.use(function(req, res, next){
     var err = new Error('Not Found');
     err.status = 404;
+    res.send("404 not found!");
     next(err);
 });
-
 
 
 var router_main = express.Router();
